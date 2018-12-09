@@ -1,0 +1,52 @@
+<% include partials/header %>
+
+
+<table class="rwd-table">
+  <% if (uzivatlia.length > 0) {%>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Fotka</th>
+    <th scope="col">Meno</th>
+    <th scope="col">Priezvisko</th>
+    <th scope="col">Rola</th>
+    <th scope="col">Os. číslo</th>
+    <th scope="col">Prezívka</th>
+    <th scope="col">#</th>
+  </tr>
+  <% uzivatlia.forEach((uzivatel, index) => { %>
+  <tr>
+    <th scope="row">
+      <%= uzivatel.id %>
+    </th>
+    <td><img src="/images/<%= uzivatel.image %>" class="rounded-circle user-img" alt=""></td>
+    <td>
+      <%= uzivatel.first_name %>
+    </td>
+    <td>
+      <%= uzivatel.last_name %>
+    </td>
+    <td>
+      <%= uzivatel.position %>
+    </td>
+    <td>
+      <%= uzivatel.number %>
+    </td>
+    <td>@
+      <%= uzivatel.user_name %>
+    </td>
+    <td>
+      <a href="/edit/<%= uzivatel.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Editovať</a>
+      <a href="/vymazat/<%= uzivatel.id %>" class="btn btn-sm btn-danger">Zmazať</a>
+    </td>
+  </tr>
+  <% }) %>
+
+</table>
+<% } else { %>
+<p class="text-center">Žiadny užívateľ nenájdený. Prejdi <a href="/pridat">tu</a> a pridaj užívateľa.</p>
+<% } %>
+
+
+
+
+<% include partials/footer %>
